@@ -1,0 +1,4 @@
+parsel~=1.6.0
+requests~=2.24.0
+redis~=3.5.3
+Telethon~=1.16.4
