@@ -39,10 +39,10 @@ REDIS_KEY_NAME = 'blogger_posts'
 api_id = None
 api_hash = None
 channel_share_link = None
-
 pool = None
-
 mail_sender = MailSender()
+client = None
+channel = None
 
 
 async def is_saved(__url__):
@@ -70,20 +70,16 @@ def init_logging():
 
 
 async def func(__blogger_tag__, __crawler__):
-    client = TelegramClient('anon', api_id, api_hash)
-    await client.connect()
-    channel = await client.get_entity(channel_share_link)
     posts = await __crawler__.fetch()
     for post in posts:
         if not await is_saved(post['url']):
-            result = await client(functions.messages.SendMessageRequest(
+            await client(functions.messages.SendMessageRequest(
                 peer=channel,
                 message='%s\n%s\n%s' % (__blogger_tag__, post['title'], post['url']),
                 no_webpage=False
             ))
             await push_to_redis(post['url'], post['title'])
             logging.info('Sent to channel => {%s, %s}' % (post['url'], post['title']))
-    await client.disconnect()
 
 
 def main():
@@ -142,5 +138,10 @@ if __name__ == '__main__':
     client2 = TelegramClient('anon', api_id, api_hash)
     client2.start()
     client2.disconnect()
+
+    client = TelegramClient('anon', api_id, api_hash)
+    client.connect()
+    channel = client.get_entity(channel_share_link)
     # 4. Start main()
     main()
+    await client.disconnect()
