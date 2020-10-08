@@ -135,10 +135,9 @@ if __name__ == '__main__':
     api_hash = telegram_bot_config['api_hash']
     channel_share_link = telegram_bot_config['channel_share_link']
     # 4. client connect
-    client2 = TelegramClient('anon', api_id, api_hash)
-    client2.start()
-    client2.disconnect()
-
+    # client2 = TelegramClient('anon', api_id, api_hash)
+    # client2.start()
+    # client2.disconnect()
     client = TelegramClient('anon', api_id, api_hash)
     client.connect()
     channel = client.get_entity(channel_share_link)
