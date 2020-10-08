@@ -85,29 +85,29 @@ async def func(__blogger_tag__, __crawler__):
 def main():
     loop = asyncio.get_event_loop()
     tasks = [
-        func('#coolshell', CoolShellCrawler),
+        # func('#coolshell', CoolShellCrawler),
         func('#编程随想', ProgramThinkCrawler),
         func('#cybartist', CybartistCrawler),
-        func('#92ez', NineTwoEZCrawler),
-        func('#mr_metro', MrMetroCrawler),
-        func('#yakoazz', YakoazzCrawler),
-        func('#crazyacking', CrazyackingCrawler),
-        func('#ackerman', AckermanCrawler),
+        # func('#92ez', NineTwoEZCrawler),
+        # func('#mr_metro', MrMetroCrawler),
+        # func('#yakoazz', YakoazzCrawler),
+        # func('#crazyacking', CrazyackingCrawler),
+        # func('#ackerman', AckermanCrawler),
         func('#王垠', YinwangCrawler),
-        func('#freebuf', FreeBufCrawler),
-        func('#完美的胖达', WmdpdCrawler),
+        # func('#freebuf', FreeBufCrawler),
+        # func('#完美的胖达', WmdpdCrawler),
         func('#司徒公子', ICoderTechCrawler),
-        func('#T00ls', T00lsCrawler),
-        func('#Linux中国 #技术', LinuxCnTechCrawler),
-        func('#Linux中国 #新闻', LinuxCnNewsCrawler),
-        func('#Linux中国 #分享', LinuxCnShareCrawler),
-        func('#Linux中国 #观点', LinuxCnTalkCrawler),
-        func('#开源中国 #综合资讯', OSChinaIndustryCrawler),
-        func('#开源中国 #博客', OSChinaBlogCrawler),
-        func('#开发者头条', ToutiaoIOCrawler),
-        func('#Mark_Karpov', MarkKarpovCrawler),
+        # func('#T00ls', T00lsCrawler),
+        # func('#Linux中国 #技术', LinuxCnTechCrawler),
+        # func('#Linux中国 #新闻', LinuxCnNewsCrawler),
+        # func('#Linux中国 #分享', LinuxCnShareCrawler),
+        # func('#Linux中国 #观点', LinuxCnTalkCrawler),
+        # func('#开源中国 #综合资讯', OSChinaIndustryCrawler),
+        # func('#开源中国 #博客', OSChinaBlogCrawler),
+        # func('#开发者头条', ToutiaoIOCrawler),
+        # func('#Mark_Karpov', MarkKarpovCrawler),
         func('#Tony_Bai', TonyBaiCrawler),
-        func('#Robert_Talbert', RobertTalbertCrawler)
+        # func('#Robert_Talbert', RobertTalbertCrawler)
     ]
     loop.run_until_complete(asyncio.wait(tasks))
     loop.close()
@@ -119,6 +119,8 @@ if __name__ == '__main__':
         exit(0)
     # 1. Fetch Working Directory
     work_dir = sys.argv[1]
+    # import os
+    # os.chdir(work_dir)
     # 2. Initialize logging Configuration
     init_logging()
     # 3. Get Redis Configuration
