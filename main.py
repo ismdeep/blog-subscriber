@@ -111,8 +111,8 @@ def main():
         # func('#Robert_Talbert', RobertTalbertCrawler)
     ]
     loop.run_until_complete(asyncio.wait(tasks))
+    client.disconnect()
     loop.close()
-
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
@@ -145,4 +145,3 @@ if __name__ == '__main__':
     channel = client.get_entity(channel_share_link)
     # 4. Start main()
     main()
-    client.disconnect()
