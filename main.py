@@ -1,9 +1,10 @@
 import sys
-from datetime import datetime
 import logging
 import json
 import redis
 import asyncio
+
+import os
 
 from telethon.sync import TelegramClient
 from telethon import functions, types
@@ -119,8 +120,7 @@ if __name__ == '__main__':
         exit(0)
     # 1. Fetch Working Directory
     work_dir = sys.argv[1]
-    # import os
-    # os.chdir(work_dir)
+    os.chdir(work_dir)
     # 2. Initialize logging Configuration
     init_logging()
     # 3. Get Redis Configuration
