@@ -70,20 +70,20 @@ def init_logging():
 
 
 async def func(__blogger_tag__, __crawler__):
+    client = TelegramClient('anon', api_id, api_hash)
+    await client.connect()
+    channel = await client.get_entity(channel_share_link)
     posts = await __crawler__.fetch()
     for post in posts:
         if not await is_saved(post['url']):
-            await push_to_redis(post['url'], post['title'])
-            client = TelegramClient('anon', api_id, api_hash)
-            await client.connect()
-            channel = await client.get_entity(channel_share_link)
             result = await client(functions.messages.SendMessageRequest(
                 peer=channel,
                 message='%s\n%s\n%s' % (__blogger_tag__, post['title'], post['url']),
                 no_webpage=False
             ))
-            await client.disconnect()
+            await push_to_redis(post['url'], post['title'])
             logging.info('Sent to channel => {%s, %s}' % (post['url'], post['title']))
+    await client.disconnect()
 
 
 def main():
