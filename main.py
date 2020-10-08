@@ -144,4 +144,4 @@ if __name__ == '__main__':
     channel = client.get_entity(channel_share_link)
     # 4. Start main()
     main()
-    await client.disconnect()
+    client.disconnect()
