@@ -1,4 +1,5 @@
 from crawler_util.crawler_with_parsel import CrawlerParsel
+import unittest
 
 
 class CybartistCrawler:
@@ -7,9 +8,12 @@ class CybartistCrawler:
         posts = await CrawlerParsel.fetch(
             __url__='https://cybart.ist/',
             __post_item_xpath__='//article[@class="item"]//header',
-            __post_url_xpath__='//a/@href',
-            __post_title_xpath__='//a/h2/text()'
+            __post_title_xpath__='//a/h2/text()',
+            __post_url_func__=lambda url: 'https://cybart.ist' + url
         )
-        for post in posts:
-            post['url'] = 'https://cybart.ist' + post['url']
         return posts
+
+
+class CybartistCrawlerTester(unittest.TestCase):
+    def test_fetch(self):
+        CrawlerParsel.test_fetch(CybartistCrawler)

@@ -8,9 +8,7 @@ class OSChinaIndustryCrawler:
     async def fetch():
         return await CrawlerParsel.fetch(
             __url__='https://www.oschina.net/news/widgets/_news_index_generic_list',
-            __post_item_xpath__='//div[@class="item news-item"]//h3[@class="header"]/a',
-            __post_url_xpath__='//a/@href',
-            __post_title_xpath__='//a/text()'
+            __post_item_xpath__='//div[@class="item news-item"]//h3[@class="header"]/a'
         )
 
 
@@ -20,16 +18,12 @@ class OSChinaBlogCrawler:
         return await CrawlerParsel.fetch(
             __url__='https://www.oschina.net/blog/widgets/_blog_index_recommend_list?classification=0',
             __post_item_xpath__='//div[@class="item blog-item"]//a[@class="header"]',
-            __post_url_xpath__='//a/@href',
-            __post_title_xpath__='//a/text()'
         )
 
 
-class TestOSChinaCrawler(unittest.TestCase):
+class OSChinaCrawlerTester(unittest.TestCase):
     def test_industry_fetch(self):
-        posts = asyncio.run(OSChinaIndustryCrawler.fetch())
-        [print(post['title']) for post in posts]
+        CrawlerParsel.test_fetch(OSChinaIndustryCrawler)
 
     def test_blog_fetch(self):
-        posts = asyncio.run(OSChinaBlogCrawler.fetch())
-        [print(post['title']) for post in posts]
+        CrawlerParsel.test_fetch(OSChinaBlogCrawler)

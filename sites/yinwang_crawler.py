@@ -1,4 +1,5 @@
 from crawler_util.crawler_with_parsel import CrawlerParsel
+import unittest
 
 
 class YinwangCrawler:
@@ -7,9 +8,11 @@ class YinwangCrawler:
         posts = await CrawlerParsel.fetch(
             __url__='http://www.yinwang.org/',
             __post_item_xpath__='//li[@class="list-group-item title"]',
-            __post_url_xpath__='//a/@href',
-            __post_title_xpath__='//a/text()'
+            __post_url_func__=lambda url: 'http://www.yinwang.org' + url
         )
-        for post in posts:
-            post['url'] = 'http://www.yinwang.org' + post['url']
         return posts
+
+
+class YinwangCrawlerTester(unittest.TestCase):
+    def test_fetch(self):
+        CrawlerParsel.test_fetch(YinwangCrawler)

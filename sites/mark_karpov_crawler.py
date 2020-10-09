@@ -1,4 +1,5 @@
 from crawler_util.crawler_with_parsel import CrawlerParsel
+import unittest
 
 
 class MarkKarpovCrawler:
@@ -7,10 +8,11 @@ class MarkKarpovCrawler:
         posts = await CrawlerParsel.fetch(
             __url__='https://markkarpov.com/posts.html',
             __post_item_xpath__='//table[@class="table table-striped mt-3"]/tr//a',
-            __post_url_xpath__='//a/@href',
-            __post_title_xpath__='//a/text()'
+            __post_url_func__=lambda url: 'https://markkarpov.com' + url if url[0] == '/' else url
         )
-        for post in posts:
-            if post['url'][0] == '/':
-                post['url'] = 'https://markkarpov.com' + post['url']
         return posts
+
+
+class MarkKarpovCrawlerTester(unittest.TestCase):
+    def test_fetch(self):
+        CrawlerParsel.test_fetch(MarkKarpovCrawler)

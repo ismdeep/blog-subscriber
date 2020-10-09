@@ -1,4 +1,5 @@
 from crawler_util.crawler_with_parsel import CrawlerParsel
+import unittest
 
 
 class ProgramThinkCrawler:
@@ -6,7 +7,10 @@ class ProgramThinkCrawler:
     async def fetch():
         return await CrawlerParsel.fetch(
             __url__='https://program-think.blogspot.com/',
-            __post_item_xpath__='//div[@class="blog-posts hfeed"]//h1[@class="post-title entry-title"]/a',
-            __post_url_xpath__='//a/@href',
-            __post_title_xpath__='//a/text()'
+            __post_item_xpath__='//div[@class="blog-posts hfeed"]//h1[@class="post-title entry-title"]/a'
         )
+
+
+class ProgramThinkCrawlerTester(unittest.TestCase):
+    def test_fetch(self):
+        CrawlerParsel.test_fetch(ProgramThinkCrawler)

@@ -1,4 +1,5 @@
 from crawler_util.crawler_with_parsel import CrawlerParsel
+import unittest
 
 
 class T00lsCrawler:
@@ -7,9 +8,11 @@ class T00lsCrawler:
         posts = await CrawlerParsel.fetch(
             __url__='https://www.t00ls.net/tech.html',
             __post_item_xpath__='//div[@class="articles_content"]//div[@class="item_content"]/h4/a',
-            __post_url_xpath__='//a/@href',
-            __post_title_xpath__='//a/text()'
+            __post_url_func__=lambda url: 'https://www.t00ls.net/' + url
         )
-        for post in posts:
-            post['url'] = 'https://www.t00ls.net/' + post['url']
         return posts
+
+
+class T00lsCrawlerTester(unittest.TestCase):
+    def test_fetch(self):
+        CrawlerParsel.test_fetch(T00lsCrawler)
