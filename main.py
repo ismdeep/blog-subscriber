@@ -28,6 +28,9 @@ from sites.toutiao_io_crawler import ToutiaoIOCrawler
 from sites.mark_karpov_crawler import MarkKarpovCrawler
 from sites.tony_bai_crawler import TonyBaiCrawler
 from sites.robert_talbert_crawler import RobertTalbertCrawler
+from sites.gkogan_co_crawler import GkoganCoCrawler
+from sites.mysql_taobao_org_monthly_crawler import MysqlTaobaoOrgMonthlyCrawler
+from sites.george_stocker_crawler import GeorgeStockerCrawler
 
 from mail_util.mail_sender import MailSender
 
@@ -108,7 +111,10 @@ def main():
         func('#开发者头条', ToutiaoIOCrawler),
         func('#Mark_Karpov', MarkKarpovCrawler),
         func('#Tony_Bai', TonyBaiCrawler),
-        func('#Robert_Talbert', RobertTalbertCrawler)
+        func('#Robert_Talbert', RobertTalbertCrawler),
+        func('#gkogan', GkoganCoCrawler),
+        func('#数据库内核月报', MysqlTaobaoOrgMonthlyCrawler),
+        func('#GeorgeStocker', GeorgeStockerCrawler)
     ]
     loop.run_until_complete(asyncio.wait(tasks))
     client.disconnect()
