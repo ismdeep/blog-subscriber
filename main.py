@@ -31,6 +31,7 @@ from sites.robert_talbert_crawler import RobertTalbertCrawler
 from sites.gkogan_co_crawler import GkoganCoCrawler
 from sites.mysql_taobao_org_monthly_crawler import MysqlTaobaoOrgMonthlyCrawler
 from sites.george_stocker_crawler import GeorgeStockerCrawler
+from sites.samcurry_net_crawler import SamCurryNetCrawler
 
 work_dir = None
 redis_config = None
@@ -110,7 +111,8 @@ def main():
         func('#Robert_Talbert', RobertTalbertCrawler),
         func('#gkogan', GkoganCoCrawler),
         func('#数据库内核月报', MysqlTaobaoOrgMonthlyCrawler),
-        func('#GeorgeStocker', GeorgeStockerCrawler)
+        func('#GeorgeStocker', GeorgeStockerCrawler),
+        func('#SamCurry', SamCurryNetCrawler)
     ]
     loop.run_until_complete(asyncio.wait(tasks))
     client.disconnect()
