@@ -7,7 +7,7 @@ import asyncio
 import os
 
 from telethon.sync import TelegramClient
-from telethon import functions, types
+from telethon import functions
 
 from sites.program_think_crawler import ProgramThinkCrawler
 from sites.coolshell_crawler import CoolShellCrawler
