@@ -6,7 +6,7 @@ class T00lsCrawler:
     async def fetch():
         posts = await CrawlerParsel.fetch(
             __url__='https://www.t00ls.net/tech.html',
-            __post_item_xpath__='//div[@class="item_content"]/h4/a',
+            __post_item_xpath__='//div[@class="articles_content"]//div[@class="item_content"]/h4/a',
             __post_url_xpath__='//a/@href',
             __post_title_xpath__='//a/text()'
         )
