@@ -32,10 +32,7 @@ from sites.gkogan_co_crawler import GkoganCoCrawler
 from sites.mysql_taobao_org_monthly_crawler import MysqlTaobaoOrgMonthlyCrawler
 from sites.george_stocker_crawler import GeorgeStockerCrawler
 
-from mail_util.mail_sender import MailSender
-
 work_dir = None
-email_account = None
 redis_config = None
 
 REDIS_KEY_NAME = 'blogger_posts'
@@ -44,7 +41,6 @@ api_id = None
 api_hash = None
 channel_share_link = None
 pool = None
-mail_sender = MailSender()
 client = None
 channel = None
 
