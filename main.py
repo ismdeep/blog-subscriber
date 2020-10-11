@@ -73,7 +73,7 @@ def init_logging():
 
 async def func(__blogger_tag__, __crawler__):
     posts = await __crawler__.fetch()
-    for post in posts:
+    for post in posts[::-1]:
         if not await is_saved(post['url']):
             await client(functions.messages.SendMessageRequest(
                 peer=channel,
