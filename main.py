@@ -105,7 +105,7 @@ def main():
         func('#Linux中国 #分享', LinuxCnShareCrawler),
         func('#Linux中国 #观点', LinuxCnTalkCrawler),
         func('#开源中国 #综合资讯', OSChinaIndustryCrawler),
-        func('#开源中国 #博客', OSChinaBlogCrawler),
+        # func('#开源中国 #博客', OSChinaBlogCrawler),
         func('#开发者头条', ToutiaoIOCrawler),
         func('#Mark_Karpov', MarkKarpovCrawler),
         func('#Tony_Bai', TonyBaiCrawler),
