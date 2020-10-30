@@ -3,10 +3,6 @@ import logging
 
 
 class MonitorUtil(object):
-    def __init__(self):
-        self.url = None
-        self.token = None
-
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, '_instance'):
             orig = super(MonitorUtil, cls)
