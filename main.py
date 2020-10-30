@@ -84,6 +84,7 @@ async def func(__blogger_tag__, __crawler__):
             ))
             await push_to_redis(post['url'], post['title'])
             logging.info('Sent to channel => {%s, %s}' % (post['url'], post['title']))
+    await MonitorUtil.update_status('blog-subscriber.func', 'true')
 
 
 def main():
