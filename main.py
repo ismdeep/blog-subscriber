@@ -6,6 +6,8 @@ import asyncio
 
 import os
 
+from monitor_util.monitor_util import MonitorUtil
+
 from telethon.sync import TelegramClient
 from telethon import functions
 
@@ -138,6 +140,12 @@ if __name__ == '__main__':
     except Exception as e:
         print(e)
         exit(-1)
+    # 4. Load Monitor Config
+    monitor_json = json.load(open(work_dir + '/monitor.json', 'r'))
+    monitor = MonitorUtil()
+    monitor.set_url(monitor_json['url'])
+    monitor.set_token(monitor_json['token'])
+
     # Set Telegram Bot
     telegram_bot_config = json.load(open(work_dir + '/telegram_bot.json', 'r'))
     api_id = telegram_bot_config['api_id']
