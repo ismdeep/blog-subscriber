@@ -7,7 +7,7 @@ class IsmdeepCrawler:
     async def fetch():
         return await CrawlerParsel.fetch(
             __url__='https://ismdeep.com/archives/',
-            __post_item_xpath__='//ul[@class="listing"]/li/a',
+            __post_item_xpath__='//header[@class="archive-article-header"]//a',
             __post_url_func__=lambda url: 'https://ismdeep.com' + url
         )
 
