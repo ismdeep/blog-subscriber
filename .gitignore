@@ -1,5 +1,4 @@
-.idea
-data
-anon.session
-anon.session-journal
-venv
+/.idea
+/data
+/venv
+__pycache__
