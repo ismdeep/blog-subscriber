@@ -63,7 +63,7 @@ async def push_to_redis(__url__, __title__):
 def init_logging():
     logging.basicConfig(
         filename=work_dir + '/product.log',
-        level=logging.DEBUG,
+        level=logging.INFO,
         format='%(asctime)s %(filename)s[%(levelname)s][line:%(lineno)d] %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
