@@ -37,7 +37,10 @@ class CrawlerParsel:
             })
         from urllib import parse
         if len(posts) > 0:
-            await MonitorUtil.update_status('blog-subscriber.' + parse.urlparse(__url__).hostname, 'true')
+            try:
+                await MonitorUtil.update_status('blog-subscriber.' + parse.urlparse(__url__).hostname, 'true')
+            except:
+                pass
         return posts
 
     @staticmethod
