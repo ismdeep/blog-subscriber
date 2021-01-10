@@ -7,7 +7,7 @@ class GeorgeStockerCrawler:
     async def fetch():
         return await CrawlerParsel.fetch(
             __url__='https://georgestocker.com/',
-            __post_item_xpath__='//section[@class="widget widget_recent_entries"]/ul/li/a'
+            __post_item_xpath__='//section[@class="widget widget_recent_entries"]//ul//li//a'
         )
 
 
