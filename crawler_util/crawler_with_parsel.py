@@ -4,12 +4,14 @@ import asyncio
 
 from monitor_util.monitor_util import MonitorUtil
 
-user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) ' \
+user_agent = 'Mozilla/5.0 ' \
+             '(Macintosh; Intel Mac OS X 10_15_7) ' \
+             'AppleWebKit/537.36 (KHTML, like Gecko) ' \
              'Chrome/85.0.4183.121 Safari/537.36'
 
 
 async def http_get_text(__url__):
-    return requests.get(url=__url__, headers={'User-Agent': user_agent}).text
+    return requests.get(url=__url__, headers={'User-Agent': user_agent}, verify=False).text
 
 
 class CrawlerParsel:
