@@ -11,16 +11,18 @@ user_agent = 'Mozilla/5.0 ' \
              'Chrome/85.0.4183.121 Safari/537.36'
 
 
-def http_get_text_with_curl(__curl__):
-    content = os.popen("curl {}".format(__curl__)).read()
-    return content
-
-
 async def http_get_text(__url__):
     try:
         return requests.get(url=__url__, headers={'User-Agent': user_agent}).text
     except:
-        return http_get_text_with_curl(__url__)
+        pass
+
+    try:
+        return os.popen("curl {}".format(__url__)).read()
+    except:
+        pass
+
+    return ""
 
 
 class CrawlerParsel:
