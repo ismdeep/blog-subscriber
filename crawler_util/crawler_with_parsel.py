@@ -11,7 +11,7 @@ user_agent = 'Mozilla/5.0 ' \
 
 
 async def http_get_text(__url__):
-    return requests.get(url=__url__, headers={'User-Agent': user_agent}, verify=False).text
+    return requests.get(url=__url__, headers={'User-Agent': user_agent}).text
 
 
 class CrawlerParsel:
