@@ -3,8 +3,6 @@ from parsel import Selector
 import asyncio
 import os
 
-from monitor_util.monitor_util import MonitorUtil
-
 user_agent = 'Mozilla/5.0 ' \
              '(Macintosh; Intel Mac OS X 10_15_7) ' \
              'AppleWebKit/537.36 (KHTML, like Gecko) ' \
@@ -14,14 +12,13 @@ user_agent = 'Mozilla/5.0 ' \
 async def http_get_text(__url__):
     try:
         return requests.get(url=__url__, headers={'User-Agent': user_agent}).text
-    except:
+    except Exception as e:
+        print(e)
         pass
-
     try:
         return os.popen("curl {}".format(__url__)).read()
     except:
         pass
-
     return ""
 
 
@@ -48,12 +45,6 @@ class CrawlerParsel:
                 'url': post_url,
                 'title': post_title
             })
-        from urllib import parse
-        if len(posts) > 0:
-            try:
-                await MonitorUtil.update_status('blog-subscriber.' + parse.urlparse(__url__).hostname, 'true')
-            except:
-                pass
         return posts
 
     @staticmethod

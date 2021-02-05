@@ -104,7 +104,7 @@ def main():
         func('#司徒公子', ICoderTechCrawler),
         func('#T00ls', T00lsCrawler),
         # func('#Linux中国 #技术', LinuxCnTechCrawler),
-        # func('#Linux中国 #新闻', LinuxCnNewsCrawler),
+        func('#Linux中国 #新闻', LinuxCnNewsCrawler),
         # func('#Linux中国 #分享', LinuxCnShareCrawler),
         # func('#Linux中国 #观点', LinuxCnTalkCrawler),
         # func('#开源中国 #综合资讯', OSChinaIndustryCrawler),
@@ -117,7 +117,7 @@ def main():
         func('#数据库内核月报', MysqlTaobaoOrgMonthlyCrawler),
         func('#GeorgeStocker', GeorgeStockerCrawler),
         func('#SamCurry', SamCurryNetCrawler),
-        func('#ismdeep', IsmdeepCrawler)
+        func('#ismdeep', IsmdeepCrawler),
     ]
     loop.run_until_complete(asyncio.wait(tasks))
     client.disconnect()
