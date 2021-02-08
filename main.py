@@ -75,17 +75,17 @@ def init_logging():
 
 async def func(__blogger_tag__, __crawler__):
     posts = await __crawler__.fetch()
-    if len(posts) <= 0:
+    if len(posts) > 0:
         await MonitorUtil.update_status('博客订阅.{}'.format(__blogger_tag__), 'true')
-    for post in posts[::-1]:
-        if not await is_saved(post['url']):
-            await client(functions.messages.SendMessageRequest(
-                peer=channel,
-                message='%s\n%s\n%s' % (__blogger_tag__, post['title'], post['url']),
-                no_webpage=False
-            ))
-            await push_to_redis(post['url'], post['title'])
-            logging.info('Sent to channel => {%s, %s}' % (post['url'], post['title']))
+        for post in posts[::-1]:
+            if not await is_saved(post['url']):
+                await client(functions.messages.SendMessageRequest(
+                    peer=channel,
+                    message='%s\n%s\n%s' % (__blogger_tag__, post['title'], post['url']),
+                    no_webpage=False
+                ))
+                await push_to_redis(post['url'], post['title'])
+                logging.info('Sent to channel => {%s, %s}' % (post['url'], post['title']))
     await MonitorUtil.update_status('blog-subscriber.func', 'true')
 
 
